@@ -1,0 +1,57 @@
+# US30 Bot - Git Ignore Rules
+# Add these to your main .gitignore file
+
+# Environment variables (contains sensitive credentials)
+.env.us30
+.env
+
+# Configuration with credentials
+config_us30.json
+
+# Database files
+data/us30_trades.sqlite
+data/us30_trades.sqlite-journal
+data/*.db
+data/*.sqlite
+
+# Log files
+logs/us30_bot.log
+logs/*.log
+
+# Backup files
+backups/
+*.backup
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# MT5 temporary files
+*.hst
+*.exe
+*.dll
+
+# Jupyter Notebooks (if used for analysis)
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/

@@ -1,0 +1,120 @@
+{
+  "broker": {
+    "name": "Exness",
+    "platform": "MT5",
+    "server": "Exness-MT5Trial9",
+    "login": null,
+    "password": null,
+    "symbol": "US30m",
+    "timeframe": "M15",
+    "max_spread_points": 50
+  },
+  "risk": {
+    "risk_percent_per_trade": 0.5,
+    "max_concurrent_trades": 5,
+    "sl_min_atr": 0.5,
+    "sl_max_atr": 3.0,
+    "tp_atr_multipliers": [0.3, 0.6, 1.0],
+    "move_sl_to_be_after_tp1": true,
+    "trailing_stop": {
+      "enabled": false,
+      "activation_pips": 30,
+      "trail_pips": 15
+    },
+    "symbol_caps": {
+      "US30m": {
+        "daily_loss_limit_pct": 5.0,
+        "max_open_risk_pct": 8.0
+      }
+    }
+  },
+  "sessions": {
+    "timezone": "America/New_York",
+    "trade_start": "09:30",
+    "trade_end": "16:00",
+    "days": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+    "enabled": true,
+    "respect_market_hours": true
+  },
+  "execution": {
+    "enabled": false,
+    "demo_only": true,
+    "slippage_points": 20,
+    "deviation_points": 50,
+    "magic_number": 202511,
+    "comment": "US30_Bot_v1",
+    "campaign_window_minutes": 10,
+    "min_seconds_between_entries": 20,
+    "campaign_max_trades": {
+      "LOW": 10,
+      "MEDIUM": 15,
+      "HIGH": 20
+    },
+    "max_position_minutes": {
+      "LOW": 15,
+      "MEDIUM": 20,
+      "HIGH": 30
+    },
+    "low_tp_pips": 30,
+    "medium_tp_primary_pips": 60,
+    "high_tp_primary_pips": 100,
+    "farmer": {
+      "enabled": false,
+      "tp_pips": 15,
+      "sl_pips": 60,
+      "trades_per_cycle": 2,
+      "cycle_seconds": 60,
+      "dynamic_tp": true,
+      "min_profit_pips": 10
+    }
+  },
+  "strategies": {
+    "active": ["nyupip", "basic_signal"],
+    "nyupip": {
+      "enabled": true,
+      "sma_period_1h": 50,
+      "cis_period_15m": 20,
+      "rsi_period": 14,
+      "rsi_overbought": 70,
+      "rsi_oversold": 30,
+      "min_candles": 100
+    },
+    "basic_signal": {
+      "enabled": true,
+      "sma_fast": 10,
+      "sma_slow": 50,
+      "rsi_period": 14,
+      "macd_fast": 12,
+      "macd_slow": 26,
+      "macd_signal": 9
+    }
+  },
+  "monitoring": {
+    "log_level": "INFO",
+    "log_file": "logs/us30_bot.log",
+    "telegram": {
+      "enabled": false,
+      "bot_token": null,
+      "chat_id": null
+    },
+    "email": {
+      "enabled": false,
+      "smtp_server": null,
+      "smtp_port": 587,
+      "from_email": null,
+      "to_email": null,
+      "password": null
+    }
+  },
+  "data": {
+    "db_path": "data/us30_trades.sqlite",
+    "backup_enabled": true,
+    "backup_interval_hours": 24
+  },
+  "us30_specific": {
+    "point_value": 1.0,
+    "typical_daily_range": 400,
+    "typical_spread": 3,
+    "notes": "US30 trades in larger point swings. Adjust TP/SL accordingly. Most active during NYSE hours (09:30-16:00 ET)."
+  }
+}
