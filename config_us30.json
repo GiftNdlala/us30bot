@@ -69,7 +69,17 @@
     }
   },
   "strategies": {
-    "active": ["nyupip", "basic_signal"],
+    "active": ["smc", "nyupip", "basic_signal"],
+    "smc": {
+      "enabled": true,
+      "entry_timeframe": "M5",
+      "bias_timeframe": "H1",
+      "ema_period": 50,
+      "tp_multiplier": 3,
+      "rr_ratio": 3,
+      "min_candles": 100,
+      "description": "Smart Money Concept: Detects BOS + MSS + OB/FVG/Liquidity Sweep with EMA bias confirmation"
+    },
     "nyupip": {
       "enabled": true,
       "sma_period_1h": 50,

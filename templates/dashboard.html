@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US30 Trading Bot - Live Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>📊 US30 Trading Bot Dashboard</h1>
+                <div class="header-status">
+                    <span class="status-badge" id="botStatus">● Initializing</span>
+                    <span class="timestamp" id="timestamp">--:--:-- UTC</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="dashboard-grid">
+            <!-- Price Card -->
+            <div class="card price-card">
+                <div class="card-header">
+                    <h2>US30m Price</h2>
+                    <span class="symbol-label">Dow Jones</span>
+                </div>
+                <div class="price-display">
+                    <div class="current-price" id="currentPrice">---.--</div>
+                    <div class="price-change" id="priceChange">+0.00 (+0.00%)</div>
+                </div>
+                <div class="price-chart-container">
+                    <canvas id="priceChart" width="100" height="40"></canvas>
+                </div>
+            </div>
+
+            <!-- Account Info Card -->
+            <div class="card account-card">
+                <div class="card-header">
+                    <h2>Account</h2>
+                </div>
+                <div class="account-info">
+                    <div class="info-row">
+                        <label>Balance:</label>
+                        <span id="balance" class="value">$0.00</span>
+                    </div>
+                    <div class="info-row">
+                        <label>Equity:</label>
+                        <span id="equity" class="value">$0.00</span>
+                    </div>
+                    <div class="info-row">
+                        <label>Free Margin:</label>
+                        <span id="freeMargin" class="value">$0.00</span>
+                    </div>
+                    <div class="info-row">
+                        <label>Used Margin:</label>
+                        <span id="usedMargin" class="value">$0.00</span>
+                    </div>
+                    <div class="info-row">
+                        <label>Margin Level:</label>
+                        <span id="marginLevel" class="value">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Open Positions Card -->
+            <div class="card positions-card">
+                <div class="card-header">
+                    <h2>Open Positions</h2>
+                    <span class="count-badge" id="positionCount">0</span>
+                </div>
+                <div class="positions-list" id="positionsList">
+                    <div class="empty-state">No open positions</div>
+                </div>
+            </div>
+
+            <!-- Strategies Card -->
+            <div class="card strategies-card">
+                <div class="card-header">
+                    <h2>Active Strategies</h2>
+                </div>
+                <div class="strategies-list" id="strategiesList">
+                    <div class="loading">Loading strategies...</div>
+                </div>
+            </div>
+
+            <!-- Statistics Card -->
+            <div class="card stats-card">
+                <div class="card-header">
+                    <h2>Statistics</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <label>Total P/L</label>
+                        <span id="totalPL" class="stat-value">$0.00</span>
+                    </div>
+                    <div class="stat">
+                        <label>Open Orders</label>
+                        <span id="openOrders" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <label>Status</label>
+                        <span id="botStatusText" class="stat-value">Initializing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Positions Table -->
+        <div class="card full-width">
+            <div class="card-header">
+                <h2>Position Details</h2>
+            </div>
+            <div class="table-container">
+                <table class="positions-table" id="positionsTable">
+                    <thead>
+                        <tr>
+                            <th>Ticket</th>
+                            <th>Type</th>
+                            <th>Volume</th>
+                            <th>Entry Price</th>
+                            <th>Current Price</th>
+                            <th>P/L</th>
+                            <th>P/L %</th>
+                            <th>Open Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="positionsTableBody">
+                        <tr class="empty-row">
+                            <td colspan="8" class="empty-state">No open positions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <div class="footer-content">
+                <span class="footer-text">🤖 Automated Trading System</span>
+                <span class="footer-text">📈 Smart Money Concept Strategy</span>
+                <span class="footer-text" id="updateFreq">Updates: Every 2s</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>
