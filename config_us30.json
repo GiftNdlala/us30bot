@@ -3,8 +3,8 @@
     "name": "Exness",
     "platform": "MT5",
     "server": "Exness-MT5Trial9",
-    "login": null,
-    "password": null,
+    "login": 211939001,
+    "password": Gift2003!,
     "symbol": "US30m",
     "timeframe": "M15",
     "max_spread_points": 50
@@ -31,13 +31,13 @@
   "sessions": {
     "timezone": "America/New_York",
     "trade_start": "09:30",
-    "trade_end": "16:00",
+    "trade_end": "21:00",
     "days": ["Mon", "Tue", "Wed", "Thu", "Fri"],
     "enabled": true,
     "respect_market_hours": true
   },
   "execution": {
-    "enabled": false,
+    "enabled": true,
     "demo_only": true,
     "slippage_points": 20,
     "deviation_points": 50,
