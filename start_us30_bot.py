@@ -70,6 +70,14 @@ def main():
         
         print("\n🔄 Initializing US30 live data stream...")
         init_live_stream()
+
+        # Start executor (strategy runner) if present
+        try:
+            from src import executor
+            executor.start(poll_seconds=30)
+            print("🔁 Strategy executor started (polling every 30s)")
+        except Exception:
+            print("⚠️  Strategy executor not available or failed to start")
         
         print("\n✅ US30 bot initialized successfully!")
         print("🌐 Starting web dashboard on http://0.0.0.0:5001")
